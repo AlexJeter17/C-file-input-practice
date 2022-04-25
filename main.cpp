@@ -1,3 +1,9 @@
+// Alex Jeter 4/24/22
+// c++ FSTREAM
+
+// This program taked in data from a file named SoftAverageData.txt. It then calculates the max and min value. Then the soft average and nicely formats
+// them in the console output. if the file is not correct or the directory is false, it outputs "not cool bro". Otherwise it will finish.
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -58,37 +64,37 @@ double findMinValue(vector<double> v){
 //calculate SoftAverage of array a having n items
 double calculateSoftAverage(vector<double> v, double maxVal, double minVal){
 
-  double sum = 0;
-  double softAvg;
+  double sum = 0;  // sum starts at 0
+  double softAvg; // will be used for soft Average
 
   for(int i = 0; i < v.size(); i++){
-    sum += v[i];
+    sum += v[i]; // add all elements
   }
 
-  sum -= maxVal;
-  sum -= minVal;
+  sum -= maxVal; // subtract max Val
+  sum -= minVal; // subtract min Val
   
-  softAvg = sum / (v.size() - 2);
+  softAvg = sum / (v.size() - 2); // Calculate. Formula = (sum - max - min) / all elements - 2
   
-  return softAvg;
+  return softAvg; // return the soft avg
 }
 
 //copy n data items from disk file into array a
 void PopulateVector(vector<double>& Vec, string filename){
 
-  ifstream fin;
-  double grades;
+  ifstream fin; // ifstream variable
+  double grades; // temporary holder
   
-  fin.open(filename);
+  fin.open(filename); // open the file
 
-  if(!fin){
+  if(!fin){ // if file didnt open
     cout << "Not cool bro" << endl;
     return;
   }
 
-  while (fin >> grades){
+  while (fin >> grades){ // while the file is inputting to grades
 
-    Vec.push_back(grades);
+    Vec.push_back(grades); //put the variable taken in, into the vector
     
   }
 
