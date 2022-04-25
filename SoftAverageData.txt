@@ -12,7 +12,7 @@
 
 ** With these numbers, the program will output :
 
-Max Value:    95
+Max Value:    98
 Min Value:    60
 Soft Average: 81.81
 
