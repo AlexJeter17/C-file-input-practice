@@ -1,10 +1,7 @@
-// Alex Jeter 4/24/22
-// c++
-// fstream
-
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -25,9 +22,9 @@ int main() {
   double softAvg = calculateSoftAverage(v,max,min);
 
   
-  cout << "Max Value:\t" << max << endl;
-  cout << "Min Value:\t" << min << endl;
-  cout << "Soft Average:\t" << softAvg << endl;
+  cout << "Max Value:\t\t" << max << endl;
+  cout << "Min Value:\t\t" << min << endl;
+  cout << "Soft Average:\t" << setprecision(4) << softAvg << endl;
   
   return 0;
 }
@@ -67,14 +64,18 @@ double calculateSoftAverage(vector<double> v, double maxVal, double minVal){
   for(int i = 0; i < v.size(); i++){
     sum += v[i];
   }
-  softAvg = sum / v.size();
 
+  sum -= maxVal;
+  sum -= minVal;
+  
+  softAvg = sum / (v.size() - 2);
+  
   return softAvg;
 }
 
 //copy n data items from disk file into array a
 void PopulateVector(vector<double>& Vec, string filename){
-  // cout << filename;
+
   ifstream fin;
   double grades;
   
@@ -87,7 +88,6 @@ void PopulateVector(vector<double>& Vec, string filename){
 
   while (fin >> grades){
 
-    // grades = stod(grade);
     Vec.push_back(grades);
     
   }
